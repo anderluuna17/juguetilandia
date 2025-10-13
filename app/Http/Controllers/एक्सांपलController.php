@@ -6,8 +6,5 @@ use Illuminate\Http\Request;
 
 class एक्सांपलController extends Controller
 {
-    public function index()
-    {
-        return view('ejemplo');
-    }
+    //
 }

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\एक्सांपलController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/ejemplo', [एक्सांपलController::class, 'index']);
