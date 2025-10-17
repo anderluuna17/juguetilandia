@@ -1,5 +1,7 @@
 <?php
 
-use App\Http\Controllers\एक्सांपलController;
+//use Illuminate.Support\Facades\Route;
+use App\Http\Controllers\LandingPageController; // Importamos el controlador
 
-Route::get('/ejemplo', [एक्सांपलController::class, 'index']);
+// Esta es la ruta principal de tu sitio web
+Route::get('/', [LandingPageController::class, 'show']);
