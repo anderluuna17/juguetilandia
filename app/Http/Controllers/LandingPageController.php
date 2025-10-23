@@ -14,19 +14,16 @@ class LandingPageController extends Controller
 {
     public function show()
     {
-        $builder = new DefaultPageBuilder(); // Contratamos al equipo de construcción
-        $strategy = null;
-
-        // Decidimos qué plano usar según la temporada
-        if (date('m') == 10) { // Si es Diciembre
-            $strategy = new ChristmasPageStrategy();
-        } else {
-            $strategy = new DefaultPageStrategy();
-        }
-
-        // Le decimos al Jefe de Obra que construya la página usando al equipo
+        // 1. Creamos el constructor
+        $builder = new DefaultPageBuilder(); 
+        
+        // 2. FORZAMOS la estrategia por defecto (la que tiene el carrusel)
+        $strategy = new DefaultPageStrategy(); 
+    
+        // 3. Construimos la página
         $pageData = $strategy->buildPage($builder);
-
+        
+        // 4. Enviamos los datos a la vista
         return view('landing', $pageData);
     }
 }

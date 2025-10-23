@@ -1,0 +1,38 @@
+/* public/css/app.css */
+
+/* Estilos que movimos del HTML */
+.hero-carousel {
+    width: 100%;
+    height: 70vh;
+    /* 70% de la altura de la ventana */
+    background-color: #eee;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.slide-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo oscuro para el texto */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* AQUÍ PUEDES SEGUIR AÑADIENDO
+   TUS OTROS ESTILOS
+*/
+
+.products-section {
+    /* ... tus estilos para la sección de productos ... */
+}
+
+.footer {
+    /* ... tus estilos para el pie de página ... */
+}

@@ -1,11 +1,121 @@
-@import 'tailwindcss';
+/* resources/css/app.css */
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    /* <-- Esta es la altura total del contenedor gris */
+    overflow: hidden;
+    background-color: #eee;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* * 1. AÑADE ESTA REGLA 
+ * Esta es la capa intermedia que contiene todos los slides.
+ * También necesita tener el 100% de la altura.
+*/
+.carousel-slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* * 2. ASEGÚRATE DE ESTA REGLA 
+ * Este es el slide individual (con la imagen).
+ * Debe tener 100% de altura para llenar a su padre.
+*/
+.carousel-slide {
+    display: none;
+    /* JS se encarga de cambiar esto */
+    width: 100%;
+    height: 100%;
+    /* <-- Esta línea es la clave */
+
+    background-size: cover;
+    /* <-- Esto hace que la imagen cubra todo el espacio */
+    background-position: center;
+    /* Centra la imagen */
+
+    /* Estilos del texto (ya los tenías) */
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* El resto de tus estilos para los botones */
+.carousel-btn {
+    position: absolute;
+    /* Posición flotante sobre el carrusel */
+    top: 50%;
+    /* Centrado verticalmente */
+    transform: translateY(-50%);
+    /* Ajuste fino para el centrado vertical */
+    z-index: 10;
+
+    /* === El Estilo "Lego" === */
+    background-color: #FFD700;
+    /* Un amarillo "Lego" clásico */
+    border: none;
+    border-radius: 50%;
+    /* ¡La forma de círculo amigable! */
+    width: 50px;
+    /* Tamaño fijo */
+    height: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra para darle profundidad */
+
+    /* === Estilo de la flecha (ícono) === */
+    color: #333;
+    /* Color oscuro para que contraste con el amarillo */
+    font-size: 2rem;
+    /* Tamaño de la flecha */
+    font-weight: bold;
+    font-family: monospace;
+    /* Una fuente que hace flechas limpias */
+    line-height: 1;
+    /* Ayuda a centrar la flecha verticalmente */
+
+    /* === Centrado perfecto de la flecha === */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    /* Transición suave */
+}
+
+/* Efecto al pasar el mouse */
+.carousel-btn:hover {
+    background-color: #ffe033;
+    /* Amarillo un poco más claro */
+    transform: translateY(-50%) scale(1.1);
+    /* Se hace un poco más grande */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto al hacer clic */
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+    /* Se encoge un poco */
+    background-color: #f0c400;
+    /* Amarillo más oscuro */
+}
+
+/* Posición del botón "Anterior" */
+.carousel-btn.prev {
+    left: 20px;
+    /* Espacio desde la izquierda */
+}
+
+/* Posición del botón "Siguiente" */
+.carousel-btn.next {
+    right: 20px;
+    /* Espacio desde la derecha */
 }
