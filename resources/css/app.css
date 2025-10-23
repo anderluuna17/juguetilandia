@@ -1,41 +1,97 @@
 /* resources/css/app.css */
 
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 70vh;
-    /* <-- Esta es la altura total del contenedor gris */
-    overflow: hidden;
-    background-color: #eee;
+/* --- ESTILOS GLOBALES --- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFF9E0;
+    /* Fondo amarillo */
 }
 
-/* * 1. AÑADE ESTA REGLA 
- * Esta es la capa intermedia que contiene todos los slides.
- * También necesita tener el 100% de la altura.
-*/
+/* --- 1. ESTILOS DEL HEADER (NAVEGACIÓN) --- */
+.main-header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 15px 0;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-brand a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3A86FF;
+    font-size: 1.2rem;
+}
+
+.nav-links a,
+.nav-auth a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.nav-auth a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-auth a.btn-signup {
+    background-color: #3A86FF;
+    color: white;
+}
+
+.nav-auth a:not(.btn-signup):hover {
+    background-color: #f4f4f4;
+}
+
+/* --- 2. SECCIÓN HERO (Centra el marco) --- */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    /* Espacio arriba y abajo */
+}
+
+/* --- 3. CONTENEDOR DEL CARRUSEL (El marco blanco) --- */
+.carousel-container {
+    position: relative;
+    /* Clave para los botones absolutos */
+    width: 100%;
+    max-width: 1090px;
+    height: 60vh;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 4. SLIDES (La imagen) --- */
 .carousel-slides {
     width: 100%;
     height: 100%;
-    position: relative;
 }
 
-/* * 2. ASEGÚRATE DE ESTA REGLA 
- * Este es el slide individual (con la imagen).
- * Debe tener 100% de altura para llenar a su padre.
-*/
 .carousel-slide {
     display: none;
-    /* JS se encarga de cambiar esto */
+    /* ¡CLAVE! Oculto por defecto, JS lo muestra */
     width: 100%;
     height: 100%;
-    /* <-- Esta línea es la clave */
-
     background-size: cover;
-    /* <-- Esto hace que la imagen cubra todo el espacio */
     background-position: center;
-    /* Centra la imagen */
 
-    /* Estilos del texto (ya los tenías) */
+    /* Estilos del texto */
     color: white;
     text-align: center;
     align-items: center;
@@ -48,74 +104,36 @@
     border-radius: 8px;
 }
 
-/* El resto de tus estilos para los botones */
+/* --- 5. BOTONES LEGO (Tus estilos) --- */
 .carousel-btn {
     position: absolute;
-    /* Posición flotante sobre el carrusel */
     top: 50%;
-    /* Centrado verticalmente */
     transform: translateY(-50%);
-    /* Ajuste fino para el centrado vertical */
     z-index: 10;
-
-    /* === El Estilo "Lego" === */
     background-color: #FFD700;
-    /* Un amarillo "Lego" clásico */
     border: none;
     border-radius: 50%;
-    /* ¡La forma de círculo amigable! */
     width: 50px;
-    /* Tamaño fijo */
     height: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Sombra para darle profundidad */
-
-    /* === Estilo de la flecha (ícono) === */
     color: #333;
-    /* Color oscuro para que contraste con el amarillo */
     font-size: 2rem;
-    /* Tamaño de la flecha */
     font-weight: bold;
-    font-family: monospace;
-    /* Una fuente que hace flechas limpias */
-    line-height: 1;
-    /* Ayuda a centrar la flecha verticalmente */
-
-    /* === Centrado perfecto de la flecha === */
     display: flex;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    /* Transición suave */
 }
 
-/* Efecto al pasar el mouse */
 .carousel-btn:hover {
-    background-color: #ffe033;
-    /* Amarillo un poco más claro */
     transform: translateY(-50%) scale(1.1);
-    /* Se hace un poco más grande */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Efecto al hacer clic */
-.carousel-btn:active {
-    transform: translateY(-50%) scale(0.95);
-    /* Se encoge un poco */
-    background-color: #f0c400;
-    /* Amarillo más oscuro */
-}
-
-/* Posición del botón "Anterior" */
 .carousel-btn.prev {
     left: 20px;
-    /* Espacio desde la izquierda */
 }
 
-/* Posición del botón "Siguiente" */
 .carousel-btn.next {
     right: 20px;
-    /* Espacio desde la derecha */
 }
