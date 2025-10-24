@@ -9,8 +9,8 @@ class DefaultPageBuilder implements LandingPageBuilder
 public function buildHeroSection()
 {
     $this->page['hero_slides'] = [
-        [ 'image' => '/images/image.png', 'title' => '...', 'subtitle' => '...'],
-        [ 'image' => '/images/image-2.png', 'title' => '...', 'subtitle' => '...'],
+        [ 'image' => '/images/image.png', 'title' => 'LOS MEJORES JUGUETES', 'subtitle' => 'DESARROLLO, AGILIDAD Y MÁS'],
+        [ 'image' => '/images/image-2.png', 'title' => 'MOMENTOS CLAVES', 'subtitle' => 'LOS JUGUETES SIEMPRE SERÁN UN BUEN CAMINO PARA EL DESARROLLO'],
     ];
     return $this;
 }
