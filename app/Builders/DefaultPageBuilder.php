@@ -14,21 +14,19 @@ public function buildHeroSection()
     ];
     return $this;
 }
-    // ▼▼▼ ESTOS SON LOS MÉTODOS QUE FALTAN ▼▼▼
-
     public function buildValuePropSection() {
         $this->page['value_props'] = [
             [
-                'title' => 'Juguetes que inspiran mentes curiosas.',
-                'text' => 'Fomentamos el aprendizaje y la creatividad a través del juego. ¡El regalo perfecto para su desarrollo!',
-                'image' => asset('images/niños1.jpg'), // <-- Cambia esta imagen
+                'title' => '¿Quienes somos?',
+                'text' => 'Somos un equipo de creadores apasionados que creemos que un juguete es mucho más que un objeto: es una chispa para la imaginación, una herramienta para descubrir el mundo y el cómplice de las mejores aventuras. Nos dedicamos a diseñar juguetes seguros, duraderos y, sobre todo, capaces de crear momentos inolvidables de alegría y aprendizaje para los más pequeños.',
+                'image' => asset('images/niños1.jpg'), 
                 'css_class' => 'bg-purple',
                 'text_color' => 'text-white'
             ],
             [
                 'title' => 'CREA MOMENTOS QUE INSPIREN SUS IDEAS',
                 'text' => 'Con la herramienta correcta, cada momento de diversión se convierte en un peldaño en su desarrollo. Es hora de despertar su genio jugando.',
-                'image' => asset('images/niños2.jpg'), // <-- Cambia esta imagen
+                'image' => asset('images/niños2.jpg'),
                 'css_class' => 'bg-orange',
                 'text_color' => 'text-dark'
             ]
@@ -71,7 +69,6 @@ public function buildHeroSection()
         return $this;
     }
 
-    // Este método ya lo tenías
     public function getPage(): array {
         return $this->page;
     }
