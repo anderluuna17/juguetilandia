@@ -1,4 +1,4 @@
-// Esperamos a que la página cargue
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Encontramos nuestros elementos
