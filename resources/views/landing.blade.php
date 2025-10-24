@@ -4,30 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juguetilandia</title>
-
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
-    @if (isset($hero_slides))
-    <div class="carousel-container">
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="nav-brand"><a href="#" onclick="return false;">JUGUETILANDIA</a></div>
+            <div class="nav-links">
+                <a href="#" onclick="return false;">JUGUETES</a>
+                <a href="#" onclick="return false;">CONÓCENOS</a>
+            </div>
+            <div class="nav-auth">
+                <a href="#" onclick="return false;">Sign in</a>
+                <a href="#" onclick="return false;" class="btn-signup">Sign up</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
         
-        <div class="carousel-slides">
-            @foreach ($hero_slides as $slide)
-            <div class="carousel-slide" style="background-image: url('{{ asset($slide['image']) }}')">
-                <div class="slide-content">
-                    <h1>{{ $slide['title'] }}</h1>
-                    <p>{{ $slide['subtitle'] }}</p>
+        @if (isset($hero_slides))
+        <div class="carousel-container"> <div class="carousel-slides">
+                @foreach ($hero_slides as $slide)
+                <div class="carousel-slide" style="background-image: url('{{ asset($slide['image']) }}')">
+                    <div class="slide-content">
+                        <h1>{{ $slide['title'] }}</h1>
+                        <p>{{ $slide['subtitle'] }}</p>
+                    </div>
                 </div>
+                @endforeach
+            </div>
+
+            <button class="carousel-btn prev" id="prevBtn">‹</button>
+            <button class="carousel-btn next" id="nextBtn">›</button>
+            
+        </div>
+        @else
+        <div class="carousel-container" style="display:flex; align-items:center; justify-content:center; background-color:#fff; color:red;">
+            <h1>Error: El controlador no está enviando los datos de $hero_slides.</h1>
+        </div>
+        @endif
+
+    </section>
+    <section class="cta-banner">
+        <h2>TRANSFORMAR EL <br><span>JUEGO EN APRENDIZAJE</span></h2>
+    </section>
+
+    @if (isset($value_props))
+        @foreach ($value_props as $prop)
+            <section class="value-prop-section {{ $prop['css_class'] }}">
+                <div class="value-prop-text {{ $prop['text_color'] }}">
+                    <h2>{{ $prop['title'] }}</h2>
+                    <p>{{ $prop['text'] }}</p>
+                </div>
+                <div class="value-prop-image">
+                    <img src="{{ $prop['image'] }}" alt="{{ $prop['title'] }}">
+                </div>
+            </section>
+           
+        @endforeach
+    @endif
+<section class="cta-banner">
+        <h2>Productos <br><span>POPULARES</span></h2>
+    </section>
+    <section class="product-selection-section">
+    <h2 class="section-title">DESCUBRE NUESTRAS SELECCIONES</h2>
+    
+    @if (isset($products))
+    <div class="products-container">
+        
+        <div class="product-card featured-card">
+            <div class="card-image-wrapper">
+                <img src="{{ $products['featured']['image'] }}" alt="{{ $products['featured']['alt'] }}">
+            </div>
+            <button class="plus-btn" aria-label="Añadir producto">+</button>
+        </div>
+        
+        <div class="products-grid">
+            @foreach ($products['grid'] as $product)
+            <div class="product-card grid-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ $product['image'] }}" alt="{{ $product['alt'] }}">
+                </div>
+                <button class="plus-btn" aria-label="Añadir producto">+</button>
             </div>
             @endforeach
         </div>
-
-        <button class="carousel-btn prev" id="prevBtn">‹</button>
-        <button class="carousel-btn next" id="nextBtn">›</button>
         
     </div>
     @endif
+    
+</section>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-column footer-contact">
+            <h3 class="footer-logo">JUGUETILANDIA</h3>
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C7.5 2 4 5.5 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.5-3.5-8-8-8zm0 11.5c-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5-1.6 3.5-3.5 3.5z"/></svg>
+                <span>Av. Siempre Viva 123, Springfield</span>
+            </p>
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.6 4.6c.4.1.7.4.8.8l.7 2.9c.1.4 0 .8-.2 1.1l-1.6 1.6c1.1 2 2.5 3.4 4.5 4.5l1.6-1.6c.3-.3.7-.4 1.1-.2l2.9.7c.4.1.7.4.8.8l.4 1.8c.1.5-.1 1-.4 1.4l-1.4 1.4c-1.1 1.1-2.9 1.4-4.6 1s-3.3-1.1-5.1-2.9C4.8 14.8 3.7 13 3.3 11.3s0-3.4 1-4.6l1.4-1.4c.4-.3.9-.5 1.4-.4l1.5.4z"/></svg>
+                <span>+52 55 1234 5678</span>
+            </p>
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>contacto@juguetilandia.com</span>
+            </p>
+        </div>
+        
+        <div class="footer-column footer-links">
+            <h4>Nuestra Tienda</h4>
+            <ul>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Novedades</a></li>
+                <li><a href="#">Más vendidos</a></li>
+                <li><a href="#">Ofertas</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column footer-links">
+            <h4>Información</h4>
+            <ul>
+                <li><a href="#">Descargas</a></li>
+                <li><a href="#">Centro de Ayuda</a></li>
+                <li><a href="#">Guías de Regalos</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column footer-links">
+            <h4>Compañía</h4>
+            <ul>
+                <li><a href="#">¿Por qué elegirnos?</a></li>
+                <li><a href="#">Nuestra Historia</a></li>
+                <li><a href="#">Prensa</a></li>
+                <li><a href="#">Anuncios</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column footer-social">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-10 4.49-10 10s4.5 10 10 10 10-4.49 10-10-4.5-10-10-10zm2.2 11.4h-1.8v7.5h-3v-7.5h-1.4v-2.6h1.4v-1.9c0-1.1.5-2.8 2.8-2.8l2.3.1v2.5h-1.7c-.2 0-.4.1-.4.4v1.7h2.1l-.3 2.6z"/></svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c-2.7 0-3 0-4.1.1-1.1 0-1.9.2-2.5.5-.7.3-1.2.7-1.7 1.2s-.9 1-1.2 1.7c-.3.6-.5 1.4-.5 2.5C2 10 2 10.3 2 12s0 2 .1 3c0 1.1.2 1.9.5 2.5.3.7.7 1.2 1.2 1.7s1 .9 1.7 1.2c.6.3 1.4.5 2.5.5 1.1 0 1.4 0 4.1.1s3 0 4.1-.1c1.1 0 1.9-.2 2.5-.5.7-.3 1.2-.7 1.7-1.2s.9-1 1.2-1.7c.3-.6.5-1.4.5-2.5 0-1.1 0-1.4-.1-4.1s0-3-.1-4.1c0-1.1-.2-1.9-.5-2.5-.3-.7-.7-1.2-1.2-1.7s-1-.9-1.7-1.2c-.6-.3-1.4-.5-2.5-.5-1 0-1.4 0-4 .1zm0 2.2c2.7 0 2.9 0 4 .1 1 0 1.5.2 1.8.3.4.1.7.3 1 .7.4.4.6.6.7 1 .1.3.3.8.3 1.8 0 1.1 0 1.4.1 4s0 2.9-.1 4c0 1-.2 1.5-.3 1.8-.1.4-.3.7-.7 1-.4.4-.6.6-1 .7-.3.1-.8.3-1.8.3-1.1 0-1.4 0-4 .1s-2.9 0-4-.1c-1 0-1.5-.2-1.8-.3-.4-.1-.7-.3-1-.7-.4-.4-.6-.6-.7-1-.1-.3-.3-.8-.3-1.8 0-1.1 0-1.4-.1-4s0-2.9.1-4c0-1 .2-1.5.3-1.8.1-.4.3-.7.7-1 .4-.4.6-.6 1-.7.3-.1.8-.3 1.8-.3 1.1 0 1.4 0 4-.1zM12 7c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 8.2c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2 3.2 1.4 3.2 3.2-1.4 3.2-3.2 3.2zm4.6-6.7c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.6 8.1c-.2-1.5-.9-2.7-2.1-3C18.1 4.5 12 4.5 12 4.5s-6.1 0-7.5.6c-1.2.3-1.9 1.5-2.1 3C2.2 9.6 2.2 12 2.2 12s0 2.4.2 3.9c.2 1.5.9 2.7 2.1 3 1.4.6 7.5.6 7.5.6s6.1 0 7.5-.6c1.2-.3 1.9-1.5 2.1-3 .2-1.5.2-3.9.2-3.9s0-2.4-.2-3.9zM10 14.8V9.2l4.3 2.8L10 14.8z"/></svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <hr>
+            <p>Copyright 2025 • Juguetilandia, Todos los Derechos Reservados.</p>
+        </div>
+        
+    </div>
+</footer>
 
 </body>
 </html>
