@@ -1,41 +1,95 @@
-/* resources/css/app.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    /* 1. Mantenemos tu color de fondo original */
+    background-color: #FFF9E0;
+
+    /* 2. Añadimos la silueta de nube (SVG en línea) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 42'%3E%3Cpath fill='white' fill-opacity='0.7' d='M41.5 20c-0.2 0-0.4 0-0.6 0C39.6 12.1 32.4 6 24 6c-7.3 0-13.4 4.8-15.3 11.4C3.8 18.2 1 22.4 1 27.5c0 6.1 4.9 11 11 11h29.5c5.2 0 9.5-4.3 9.5-9.5S46.7 20 41.5 20z'/%3E%3C/svg%3E");
+
+    /* 3. Ajustamos el tamaño y repetición del patrón */
+    background-size: 150px 150px;
+    /* Tamaño de cada nube, ajústalo a tu gusto */
+    background-repeat: repeat;
+}
+
+.main-header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 15px 0;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-brand a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3A86FF;
+    font-size: 1.2rem;
+}
+
+.nav-links a,
+.nav-auth a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.nav-auth a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-auth a.btn-signup {
+    background-color: #3A86FF;
+    color: white;
+}
+
+.nav-auth a:not(.btn-signup):hover {
+    background-color: #f4f4f4;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
 
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 70vh;
-    /* <-- Esta es la altura total del contenedor gris */
+    max-width: 1090px;
+    height: 60vh;
     overflow: hidden;
-    background-color: #eee;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* * 1. AÑADE ESTA REGLA 
- * Esta es la capa intermedia que contiene todos los slides.
- * También necesita tener el 100% de la altura.
-*/
 .carousel-slides {
     width: 100%;
     height: 100%;
-    position: relative;
 }
 
-/* * 2. ASEGÚRATE DE ESTA REGLA 
- * Este es el slide individual (con la imagen).
- * Debe tener 100% de altura para llenar a su padre.
-*/
 .carousel-slide {
     display: none;
-    /* JS se encarga de cambiar esto */
     width: 100%;
     height: 100%;
-    /* <-- Esta línea es la clave */
-
     background-size: cover;
-    /* <-- Esto hace que la imagen cubra todo el espacio */
     background-position: center;
-    /* Centra la imagen */
 
-    /* Estilos del texto (ya los tenías) */
     color: white;
     text-align: center;
     align-items: center;
@@ -48,74 +102,433 @@
     border-radius: 8px;
 }
 
-/* El resto de tus estilos para los botones */
 .carousel-btn {
     position: absolute;
-    /* Posición flotante sobre el carrusel */
     top: 50%;
-    /* Centrado verticalmente */
     transform: translateY(-50%);
-    /* Ajuste fino para el centrado vertical */
     z-index: 10;
-
-    /* === El Estilo "Lego" === */
     background-color: #FFD700;
-    /* Un amarillo "Lego" clásico */
     border: none;
     border-radius: 50%;
-    /* ¡La forma de círculo amigable! */
     width: 50px;
-    /* Tamaño fijo */
     height: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Sombra para darle profundidad */
-
-    /* === Estilo de la flecha (ícono) === */
     color: #333;
-    /* Color oscuro para que contraste con el amarillo */
     font-size: 2rem;
-    /* Tamaño de la flecha */
     font-weight: bold;
-    font-family: monospace;
-    /* Una fuente que hace flechas limpias */
-    line-height: 1;
-    /* Ayuda a centrar la flecha verticalmente */
-
-    /* === Centrado perfecto de la flecha === */
     display: flex;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    /* Transición suave */
 }
 
-/* Efecto al pasar el mouse */
 .carousel-btn:hover {
-    background-color: #ffe033;
-    /* Amarillo un poco más claro */
     transform: translateY(-50%) scale(1.1);
-    /* Se hace un poco más grande */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Efecto al hacer clic */
-.carousel-btn:active {
-    transform: translateY(-50%) scale(0.95);
-    /* Se encoge un poco */
-    background-color: #f0c400;
-    /* Amarillo más oscuro */
-}
-
-/* Posición del botón "Anterior" */
 .carousel-btn.prev {
     left: 20px;
-    /* Espacio desde la izquierda */
 }
 
-/* Posición del botón "Siguiente" */
 .carousel-btn.next {
     right: 20px;
-    /* Espacio desde la derecha */
+}
+.cta-banner {
+    background-color: #FEEA56;
+    padding: 1.5rem 5%;
+    text-align: left;
+    
+}
+
+.cta-banner h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+}
+.cta-banner h2 span {
+    color: #0B3D91;
+    font-size: 3rem;
+}
+
+.value-prop-section {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    align-items: center;
+    min-height: 400px;
+    padding: 0;
+
+    border-radius: 1.5rem;
+    overflow: hidden;
+
+    width: 90%;
+    margin: 2rem 5%;
+    box-sizing: border-box;
+}
+
+.bg-purple {
+    background-color: #6C54A4;
+    background-image: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 0.04) 80px,
+        transparent 81px
+    );
+    background-size: 250px 250px;
+}
+.bg-orange {
+    background-color: #F8B36D;
+    background-image: 
+        linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.2) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.2) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.2) 75%);
+    background-size: 50px 50px;
+    background-position: 0 0, 0 25px, 25px -25px, 25px 0px;
+    
+}
+.text-white {
+    color: #FFFFFF;
+}
+.text-dark {
+    color: #333333;
+}
+
+
+.value-prop-text {
+
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    
+    margin: 0 4rem;
+    color: #FFFFFF;
+}
+
+.value-prop-text h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.value-prop-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 500px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.value-prop-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.value-prop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+@media (max-width: 768px) {
+    .value-prop-section {
+        grid-template-columns: 1fr;
+    }
+
+    .bg-orange .value-prop-text {
+        order: 1;
+    }
+    .bg-orange .value-prop-image {
+        order: 2;
+    }
+    
+    .bg-purple .value-prop-text {
+        order: 2;
+    }
+    .bg-purple .value-prop-image {
+        order: 1;
+    }
+
+    .value-prop-text {
+        padding: 2.5rem;
+        text-align: center;
+    }
+
+    .value-prop-text h2 {
+        font-size: 1.8rem;
+    }
+    .value-prop-text p {
+        font-size: 1rem;
+    }
+
+    .value-prop-image {
+        min-height: 300px; 
+    }
+    
+    .cta-banner {
+        text-align: center;
+    }
+}
+
+.product-selection-section {
+    background-color: #649A65;
+    padding: 3rem 5%;
+    
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, 0.07) 15px,
+        transparent 15px,
+        transparent 30px
+    );
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.product-card {
+    background-color: #FCEEEE;
+    border-radius: 1.25rem;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.product-card:hover {
+    transform: translateY(-8px);
+    
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-image-wrapper {
+    width: 100%;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.grid-card .card-image-wrapper {
+    aspect-ratio: 1 / 1; 
+}
+
+.featured-card {
+    display: flex;
+    flex-direction: column;
+}
+.featured-card .card-image-wrapper {
+    height: 100%;
+}
+
+.plus-btn {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    border: 3px solid #777777;
+    color: #777777;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 2.2rem;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.plus-btn:hover {
+    transform: scale(1.1);
+    background-color: #777777;
+    color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-card {
+        min-height: 400px;
+    }
+}
+.main-footer {
+    background-color: #1a1a3d; 
+    color: #E0E0E0;
+    padding: 4rem 5%;
+    
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.2) 0,
+        rgba(0, 0, 0, 0.2) 100px,
+        transparent 100px,
+        transparent 200px
+    );
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.footer-column {
+    padding: 0 1rem;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: #B0B0C0;
+    line-height: 1.5;
+}
+.footer-contact svg {
+    width: 18px;
+    height: 18px;
+    fill: #FFFFFF;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+.footer-contact span {
+    flex: 1;
+}
+
+
+.footer-links h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+.footer-links a {
+    color: #B0B0C0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-links a:hover {
+    color: #FFFFFF;
+}
+
+.footer-social h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+}
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+.social-icons a {
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+.social-icons a:hover {
+    transform: scale(1.15);
+}
+.social-icons svg {
+    width: 28px;
+    height: 28px;
+    fill: #FFFFFF;
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #B0B0C0;
+    font-size: 0.9rem;
+}
+.footer-bottom hr {
+    display: none; 
+}
+
+
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-contact {
+        grid-column: 1 / 2;
+    }
+    .footer-social {
+        grid-column: 2 / 3;
+    }
+    .footer-bottom {
+        grid-column: 1 / -1; 
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .footer-column {
+        grid-column: auto; 
+    }
+    .footer-contact, .footer-social {
+        text-align: center;
+    }
+    .footer-contact p {
+        justify-content: center;
+        text-align: left;
+    }
+    .social-icons {
+        justify-content: center;
+    }
 }
